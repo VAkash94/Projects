@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IST Department at RIT</title>
+<!--DONE BY AKASH VENKATACHALAM-->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Cookery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/jquery.bpopup.min.js"></script>   <!--PLUGIN -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>	<!--Table PLUGIN-->
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>  <!--Voice PLUGIN-->
+<script src="cookies.js"></script> 		<!--COOKIES-->
+<script src = "js/jquery.appear.js"></script>	<!--DIV Appear PLUGIN-->
+ 
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117512433-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117512433-1');
+</script>
+
+
+<!-- start-smoth-scrolling -->
+		<script type="text/javascript" src="js/move-top.js"></script>  <!--PLUGIN -->
+		<script type="text/javascript" src="js/easing.js"></script>    <!--PLUGIN -->
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				
+				$('#UGDeg').appear(function(){					
+					minor_call();			
+				});
+				$('#UGMin').appear(function(){					// Makes Ajax calls one div screen view in advance
+					employment_call();					
+					});
+				$('#Emp').appear(function(){
+					people_call();				
+					});
+				$('#People').appear(function(){
+					resource_call();
+					footer_call();
+					console.log("stu res & contact");
+					});
+				
+				
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+				$('.banner h4').css('color','orange');
+				
+				xhr('get',{path:'/about/'}).done(function(about_json){
+					
+					$('#about').prepend('<h3>'+about_json.title+'</h3>');
+					$('.content-right p:first').append(about_json.description);
+					$('#about span').css('color','orange').append("\""+about_json.quote+"\"");
+					$('.content-left p').css('color','orange').fadeIn(5000).append("--"+about_json.quoteAuthor);					
+					});
+				$('#my-button').on('click', function(){
+					$('#element_to_pop_up').bPopup({
+						 easing: 'easeOutBack', 		//uses jQuery easing plugin
+						speed: 450,
+						transition: 'slideDown'
+						});
+					});
+				
+			});
+			function xhr(getOrPost, d)
+			{	
+			return $.ajax({
+				type:getOrPost,
+				url:'proxy.php',
+				cache:false,
+				async:true,
+				dataType:'json',	// this is important or else you'll get a plain string
+				data:d,
+				beforeSend:function(){
+						// put out a spinner if pId is defined
+				}
+			
+			}).always(function(){	//it fires when it's back// turn my spinner off
+				// kill the spinner
+				
+			}).fail(function(err){
+			console.log(err);
+			
+			});		// note - no done!
+			}
+			
+		</script>
+	<!-- start-smoth-scrolling -->
+<link href="css/styles.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<!-- animation-effect -->
+<link href="css/animate.min.css" rel="stylesheet"> 
+<script src="js/wow.min.js"></script>	<!--PLUGIN -->
+
+<script>
+ new WOW().init();
+</script>
+<!-- //animation-effect -->
+
+</head>
+<body>
+ <div class="header">
+	<div class="container">
+		<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="800ms">
+			<h1><a href="http://www.rit.edu"><span>RIT</span><!--<img src="images/oo.png" alt=""><img src="images/oo.png" alt="">--></a></h1>
+		</div>
+		<div class="nav-icon">		
+			<a href="#" class="navicon"></a>
+				<div class="toggle">
+					<ul class="toggle-menu">
+						<li><a class="active" href="index.html">Home</a></li>			<!--Smooth Scroll to that Div-->
+						<li><a  href="#content-down" class="scroll">About</a></li>
+						<li><a  href="#UGDeg" class="scroll">Undergraduate Degrees</a></li>
+						<li><a  href="#grad" class="scroll">Graduate Degrees</a></li>
+						<li><a  href="#UGMin" class="scroll">UnderGraduate Minors</a></li>
+						<li><a  href="#Emp" class="scroll">Employment</a></li>
+						<li><a  href="#People" class="scroll">Our People</a></li>
+						<li><a  href="#FResearch" class="scroll">Faculty Research</a></li>
+						<li><a  href="#StuRes" class="scroll">Student Resources</a></li>
+						<li><a  href="#Contact" class="scroll">Contact Us</a></li>
+					</ul>
+				</div>
+			<script>
+			$('.navicon').on('click', function (e) {
+			  e.preventDefault();
+			  $(this).toggleClass('navicon--active');
+			  $('.toggle').toggleClass('toggle--active');
+			});
+			
+						
+			</script>
+		</div>
+	<div class="clearfix"></div>
+	</div>
+	<!-- start search-->	
+		<div class="banner">
+			
+			<h4 class="animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="100ms">INFORMATION SCIENCES &
+TECHNOLOGIES @ RIT</h4>
+			<div id="voiceBut"></div>			
+			<a class="scroll down" href="#content-down"><img src="images/down.png" alt=""></a>			
+		</div>
+		<script>
+			// Creating a form to get in name, store it Cookies and then give a Personalized welcome to the user.
+			
+			var Name="9";
+			$('#voiceBut').append('<form onsubmit = "return evaluateForm();" id="nameForm"><p style="font-weight:600;">Enter your name:</p> <input type="text" name="fname" id="forName"><input type="submit" value="Submit"></form>');	// If cookie is empty
+			Name = GetCookie('fname');		
+			if (Name !== null)
+			{				
+				$('#nameForm').css('display','none');
+				responsiveVoice.speak("Hey "+Name+". Welcome to Information Science and Technology at RIT");	// Sentence to speak out
+			}
+			function evaluateForm()
+			{
+				SetCookie('fname', document.getElementById('forName').value);
+			}	
+		</script>
+</div>
+<!--content-->
+
+<div id="element_to_pop_up">
+    <a class="b-close"><button class = "close">x</button><a/>	<!--Pop Up element-->
+</div>
+
+<div id="element_to_pop_up2">
+    <a class="b-close"><button class = "close">x</button><a/>
+</div>
+
+<div class="about" id="content-down">
+	<div class="content-top-top">
+		<div class="container">
+			<div class="content-top">
+				<div id = "about" class="col-md-4 content-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="10ms">					
+					<label><i class="glyphicon glyphicon-menu-up"></i></label>
+					<span></span> <br/>
+					<p></p>
+				</div>
+				<div class="col-md-8 content-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="10ms">
+					<p> </p>					
+				</div>
+			
+			</div>			
+		</div>
+	</div>
+</div>
+<!--Degrees-->
+<div class="services" id="UGDeg">
+	<div class="container">
+		<div class="col-md-4 services-left animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+				<h3>Our Undergraduate Degrees</h3>
+				<label><i class="glyphicon glyphicon-menu-up"></i></label>
+				<span></span>
+		</div>
+		<script>
+			xhr('get',{path:'/degrees/'}).done(function(degrees_json){
+									
+					$.each(degrees_json.undergraduate, function(i){		// Undergraduate Degree Section
+						//console.log(i);
+						var t = this.title;
+						$('.food-grid h4').eq(i).addClass('UgDName').attr('data', t).append(this.title);
+						$('.food-grid p').eq(i).append(this.description);
+						});
+					$('.UgDName').on('click',function(){
+						var ugDeg = getAttributeByName(degrees_json.undergraduate, 'title', $(this).attr('data'));
+						//console.log(ugDeg);
+						removeAndAddDiv("ugDeg");		// Function to remove contents of popup and give a new div id name
+						$('#ugDeg').append('<h2>'+ugDeg.title+'</h2><br><hr><br>');
+						$('#ugDeg').append('<ul></ul>');
+						$.each(ugDeg.concentrations, function(){
+							//console.log(this);
+							$('#ugDeg ul').append('<li>'+this+'</li>');
+							});						
+					});
+					
+					$.each(degrees_json.graduate, function(i){		// Graduate Degree Section
+						//console.log(i);
+						var t = this.title;
+						$('.food-grid1 h4').eq(i).addClass('PgDName').attr('data', t).append(this.title);
+						$('.food-grid1 p').eq(i).append(this.description);
+						});
+					$('.PgDName').on('click',function(){
+						var PgDeg = getAttributeByName(degrees_json.graduate, 'title', $(this).attr('data'));
+						//console.log(ugDeg);
+						removeAndAddDiv("PgDeg");
+						console.log(PgDeg.title);
+						$('#PgDeg').append('<h2>'+PgDeg.title+'</h2><br><hr><br>');
+						$('#PgDeg').append('<ul></ul>');
+						$.each(PgDeg.concentrations, function(){
+							//console.log(this);
+							$('#PgDeg ul').append('<li>'+this+'</li>');
+							});						
+					});
+						
+				});
+				function removeAndAddDiv(id_name)
+				{
+					$('.popup-content').remove();
+						$('#element_to_pop_up').bPopup({
+						easing: 'easeOutBack', //uses jQuery easing plugin
+						speed: 450,
+						transition: 'slideDown'
+	    
+						}).after().append('<div class= "popup-content" id="'+id_name+'"></div>');
+				}
+				function getAttributeByName(arr,name, val)
+				{					
+					var result = null;
+					$.each(arr, function(){					
+					if(this[name] === val)
+					result = this;
+					});
+					return result;
+				}
+		</script>
+			<div class="content-mid">
+			
+				<div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms" >
+					<br><br><br><br><br><br><br><br><br>					
+					<div class=" hover-fold" >
+					  <h4 style="cursor: pointer"></h4>
+					  <div class="top">
+						<div class="front face"></div>
+						<div class="back face">
+						<p></p>
+						</div>
+					  </div>
+					  <div class="bottom"></div>
+					</div>
+				</div>
+				<div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<br><br><br><br><br><br><br><br><br>
+					<div class=" hover-fold" >
+					  <h4 style="cursor: pointer"></h4>
+					  <div class="top">
+						<div class="front face front1"></div>
+						<div class="back face">
+						<p></p>
+						</div>
+					  </div>
+					  <div class="bottom bottom1"></div>
+					</div>
+				</div>
+				<div class="col-md-4 food-grid animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4 style="cursor: pointer"></h4>
+					  <div class="top">
+						<div class="front face front2"></div>
+						<div class="back face">
+						<p></p>
+						</div>
+					  </div>
+					  <div class="bottom bottom2"></div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<br>
+			</div>
+		
+		
+		<!--
+		
+		//////////////////// START OF GRADUATE PROGRAMS /////////////////////////
+		-->
+		
+		<br>
+	<div class = "graduate" id="grad">
+		<div class="col-md-4 services-left animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+				<h3>Our Graduate Degrees</h3>
+				<label><i class="glyphicon glyphicon-menu-up"></i></label>
+				<span></span>
+				
+		</div>
+			
+		<div class="content-mid">
+			
+				<div class="col-md-4 food-grid1 animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="100ms" >
+					<br><br><br><br><br><br><br>					
+					<div class=" hover-fold1">
+					  <h4 style="cursor: pointer"></h4>
+					  <div class="top">
+						<div class="front face"></div>
+						<div class="back face">
+						<p></p>
+						</div>
+					  </div>
+					  <div class="bottom"></div>
+					</div>
+				</div>
+				<div class="col-md-4 food-grid1 animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="100ms">
+					<br><br><br><br><br><br><br>	
+					<div class=" hover-fold1">
+					  <h4 style="cursor: pointer"></h4>
+					  <div class="top">
+						<div class="front face front1"></div>
+						<div class="back face">
+						<p></p>
+						</div>
+					  </div>
+					  <div class="bottom bottom1"></div>
+					</div>
+				</div>
+				<div class="col-md-4 food-grid1 animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="100ms">
+					<div class=" hover-fold1">
+					  <h4 style="cursor: pointer"></h4>
+					  <div class="top">
+						<div class="front face front2"></div>
+						<div class="back face">
+						<p></p>
+						</div>
+					  </div>
+					  <div class="bottom bottom2"></div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<br>
+			</div>	
+	</div>
+			
+		<div class="services-top">		
+					
+			<div class="clearfix"> </div>
+		</div>
+		
+	</div>
+</div>
+<!--//services-->
+
+<!--UNDERGRADUATE MINORS-->
+	<div class="content-top-top" id = "UGMin">
+		<div class="container">
+			<div class="content-top">
+				<div class="col-md-4 content-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h3>Our Undergraduate Minors</h3>
+					<label><i class="glyphicon glyphicon-menu-up"></i></label>
+					<!--<span>There are many variations</span>-->
+				</div>
+				<div class="col-md-8 content-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<!--<p>There are many var form, here are many variations by injected humour. There</p>-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		<div class = "container1">				
+					<div class="col-md-6 news-bottom1 fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item content-item1" >
+								
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>
+					<div class="col-md-6 news-bottom1 animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item content-item2">
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>				
+					<div class="col-md-6 news-bottom1" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item content-item3">
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>
+					<div class="col-md-6 news-bottom1 animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item content-item4">
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>
+					<div class="col-md-6 news-bottom1 animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item content-item5">
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>
+					<div class="col-md-6 news-bottom1 animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item content-item6">
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>
+					<div class="col-md-6 news-bottom1 animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item content-item7">
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>		
+		</div>
+		<script>
+			function minor_call()
+			{
+			xhr('get',{path:'/minors/'}).done(function(minors_json){
+								
+				$.each(minors_json.UgMinors, function(i){
+					var n = this.name;
+					//console.log(i);
+					$('.news-bottom1 p').eq(i).addClass('UgMinor').attr('data', n).append(this.title);
+					});
+				$('.UgMinor').on('click',function(){
+					
+					var UgMin = getAttributeByName(minors_json.UgMinors, 'name', $(this).attr('data'));
+					removeAndAddDiv("UgMin");
+						
+						$('#UgMin').append('<h2>'+UgMin.title+'</h2><br><hr><br>');
+						$('#UgMin').append('<h5>'+UgMin.description+'</h5><br>');
+						$('#UgMin').append('<h4>Courses</h4><br>');
+						$('#UgMin').append('<ul></ul>');
+						
+						$.each(UgMin.courses, function(){
+							//console.log(this);
+							$('#UgMin ul').append('<li style = "cursor:pointer" data='+this+' class="UgMinCourse">'+this+'</li>');
+							$('#UgMin ul li').hover(function(){
+						$(this).css('color','red');},function(){
+						$(this).css('color','');
+							});
+							
+						});
+						$('.UgMinCourse').on('click', function(){
+							
+							var val = $(this).children().context.innerHTML;
+							
+							xhr('get',{path:'/course/courseID='+val+'/'}).done(function(course_json){
+							console.log(course_json);
+							removeAndAddDiv2('CourseClicked');
+							$('#CourseClicked').append('<h2 style="color:#F08080; text-align:center">'+course_json.title+' ('+course_json.courseID+')</h2><hr><br>');
+							$('#CourseClicked').append('<p style="color:#20B2AA">'+course_json.description+'</p>');
+							});
+							
+							function removeAndAddDiv2(id_name)
+						{
+						$('.popup-content2').remove();
+						$('#element_to_pop_up2').bPopup({
+						easing: 'easeOutBack', //uses jQuery easing plugin
+						speed: 450,
+						transition: 'slideDown'
+	    
+							}).after().append('<div class= "popup-content2" id="'+id_name+'"></div>');
+						}
+							
+						});
+																			
+					});
+								
+				});
+			}
+		</script>						
+		</div>			
+	</div>
+	
+<!--EMPLOYMENT-->
+</div>
+
+<div class="services" id="Emp">
+	<div class="container">
+		<div class="col-md-4 services-left animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+				<h3>EMPLOYMENT</h3>
+				<label><i class="glyphicon glyphicon-menu-up"></i></label>
+				<span></span>
+		</div>
+		<br><br><br><br>
+		<br>
+		<div class = "employment">
+			<div class="top-emp">
+				<h2></h2>
+				<p></p>
+					<br>
+				<h2></h2>
+				<p></p>
+			</div>
+				<div id = "employmentStats" class="animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="1000ms" style="margin-left: 60px;">
+					<div class="emp1" ><h3></h3><p></p> </div>
+					<div class="emp2"> <h3></h3><p></p></div>
+					<div class="emp3"> <h3></h3><p></p></div>
+					<div class="emp4"> <h3></h3><p></p></div>
+				</div>	
+				<br>
+				<div class="empName">
+					<h3 class = "emp">Employers</h3>
+					<p></p>
+					<h3 class="carrers">Careers</h3>
+					<p></p>
+				</div>
+				<br>
+			
+			<div class="mapNtable">				
+				<div class="mapouter">
+					<h3>Where Our Students Work</h3><br>
+					<div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="http://www.ist.rit.edu/api/map/" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+						
+					</iframe></div>
+					<style>.mapouter{overflow:hidden;height:500px;width:600px;}.gmap_canvas {background:none!important;height:500px;width:600px;}</style>
+				</div>
+				<div class="tables">
+					<br><br><br>
+					<div class="coop-table" style="cursor: pointer">
+					
+					</div> <br>
+					<div class="emp-table"  style="cursor: pointer">
+						
+					</div>
+				</div>
+			</div>
+			<script>
+				
+			</script>
+		</div>	
+		<script>
+			
+			function employment_call(){
+			xhr('get',{path:'/employment/'}).done(function(employment_json)		// Ajax call for employment and creaing Data Tables
+				{				
+					$.each(employment_json.introduction.content, function(i){
+						$('.employment h2').eq(i).append(this.title);
+						$('.employment p').eq(i).append(this.description);
+						});
+					$.each(employment_json.degreeStatistics.statistics, function(i){
+						$('#employmentStats div h3').eq(i).append(this.value);
+						$('#employmentStats div p').eq(i).append(this.description);
+						});
+					
+					$.each(employment_json.employers.employerNames, function(){
+						
+						$('.emp').append('<p>'+this+'</p>');
+						});
+					$.each(employment_json.careers.careerNames, function(){
+						$('.carrers').append('<p>'+this+'</p>');
+						});
+					$('.coop-table').append('<h4>'+employment_json.coopTable.title+'</h4>').on('click',function(){
+						
+						removeAndAddDiv("CoopTab");				
+						
+					$('#CoopTab').append('<h2>'+employment_json.coopTable.title+"</h2><hr>");
+$('#CoopTab').append(' <table id="coopDTable" class="display" style="width:100%"><thead><tr> <th>Employer</th> <th>Degree</th> <th>City</th> <th>Term</th> </tr></thead><tbody></tbody></table>');
+						
+					$.each(employment_json.coopTable.coopInformation, function(){
+						$('#coopDTable tbody').append('<tr><td>'+this.employer+'</td><td>'+this.degree+'</td><td>'+this.city+'</td><td>'+this.term+'</td></tr>');
+						});
+					$('#coopDTable').DataTable();		// Data Table called for Coop
+					});					
+					$('.emp-table').append('<h4>'+employment_json.employmentTable.title+'</h4>').on('click',function(){
+						removeAndAddDiv("EmpTab");						
+						
+					$('#EmpTab').append('<h2>'+employment_json.employmentTable.title+"</h2><hr>");
+$('#EmpTab').append(' <table id="empDTable" class="display" style="width:100%"><thead><tr> <th>Employer</th> <th>Degree</th> <th>City</th> <th>Title</th> <th>Start Date</th> </tr></thead><tbody></tbody></table>');
+						
+					$.each(employment_json.employmentTable.professionalEmploymentInformation, function(){
+						$('#empDTable tbody').append('<tr><td>'+this.employer+'</td><td>'+this.degree+'</td><td>'+this.city+'</td><td>'+this.title+'</td><td>'+this.startDate+'</td></tr>');
+						});
+					$('#empDTable').DataTable();		// Data Table called for employment
+					});
+				});
+			}	
+					
+		</script>
+					
+		<div class="services-top">		
+					
+			<div class="clearfix"> </div>
+		</div>
+		
+	</div>
+</div>
+
+
+<!--Our People-->
+
+<div class="content-top-top" id="People">
+		<div class="container">
+			<div class="content-top">		
+				<div class="col-md-4 content-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h3>Our People</h3>
+					<label><i class="glyphicon glyphicon-menu-up"></i></label>
+					<h4 id="PepSp">Click on the tags to know more about our people</h4>
+				</div> 
+				<div class="col-md-8 content-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+				</div>
+				<br><br><br><br><br>
+				<script> 
+					
+					$(document).ready(function(){
+					$("#faculty-click").on('click',function(){
+					$('#staff-info').slideUp("slow",function(){
+					$("#faculty-info").delay(100).slideDown("slow");
+					});      
+						 });
+					$('#staff-click').on('click',function(){
+					    $('#faculty-info').slideUp("slow", function(){
+						    $('#staff-info').delay(100).slideDown("slow");
+					    });				
+					});
+					});
+					
+				</script>
+				
+				<div id="flip-div"> 
+					<div id="faculty-click" style="cursor: pointer"><p>Faculty</p></div>
+					<div id="staff-click" style="cursor: pointer"><p>Staff</p></div>
+				</div>
+				<br><hr>
+				<script>
+				function people_call(){
+					xhr('get',{path:'/research/'}, '#research').done(function(research_json)	// Ajax call for Research
+			{					
+					xhr('get',{path:'/people/'}, '#people').done(function(people_json){			// Ajax call for People
+			
+			$.each(people_json.faculty, function(i){
+				$('#faculty-info').append('<div class="col-md-6 news-bottom1"></div>');
+				$('#faculty-info>div').eq(i).append('<div class="content-itemP pepFac" data-uName="'+this.username+'" style="background-image: url('+this.imagePath+')"><div class="overlayP"></div><p>'+this.name+'</p></div>');				
+				
+				});
+				$('.pepFac').on('click', function(){
+					var fac = getAttributeByName(people_json.faculty, 'username', $(this).attr('data-uName'));
+					var facCit = getAttributeByName(research_json.byFaculty, 'username', $(this).attr('data-uName'));					
+					removeAndAddDiv("PepFac");			// remove existing content and give pop-up a new ID
+						$('#PepFac').append('<h2>'+fac.name+', '+fac.title+'</h2><p style="color:blue; text-align:center">'+fac.tagline+'</p><hr><br>');
+
+$('#PepFac').append('<img src = "'+fac.imagePath+'" style = "display: block; margin: 0 auto;"/><p style="color:#4B0082; font-size:20px; font-family:cursive;">Contact Details</p>');
+											
+						if(fac.office.length != 0)		// Checking if the content of office, website, phone, email exists
+						{
+							$('#PepFac').append('<i class="fas fa-compass"></i> ' +fac.office+'<br>');
+						}
+						if(fac.website.length != 0)
+						{
+							$('#PepFac').append('<i class="fas fa-laptop"></i>' +fac.website+'<br>');
+						}
+						if(fac.phone.length != 0)
+						{
+							$('#PepFac').append('<i class="fas fa-phone-square"></i>' +fac.phone+'<br>');
+						}
+						if(fac.email.length !== 0)
+						{
+							$('#PepFac').append('<i class="far fa-envelope"></i>' +fac.email+'<br>');
+						}
+						
+						if( typeof facCit.citations.length !== null)
+						{
+						$('#PepFac').append('<br><p style="color:red; font-size:20px;">Research done by '+fac.name+'<p><ul></ul>');
+						$.each(facCit.citations, function(){						
+							$('#PepFac ul').append('<li>'+this+'</li>');
+							});
+						}																				
+					});
+			$.each(people_json.staff, function(i){
+				$('#staff-info').append('<div class="col-md-6 news-bottom1"></div>');
+				$('#staff-info>div').eq(i).append('<div class="content-itemP pepStaff" data-uName="'+this.username+'" style="background-image: url('+this.imagePath+')"><div class="overlayP"></div><p>'+this.name+'</p></div>');							
+				});
+				$('.pepStaff').on('click', function(){
+					var staff = getAttributeByName(people_json.staff, 'username', $(this).attr('data-uName'));
+					
+					removeAndAddDiv("PepStaff");	// remove existing content and give pop-up a new ID
+						
+						$('#PepStaff').append('<h2>'+staff.name+', '+staff.title+'</h2><p style="color:blue; text-align:center">'+staff.tagline+'</p><hr><br>');
+$('#PepStaff').append('<img src = "'+staff.imagePath+'" style = "display: block; margin: 0 auto;"/><p style="color:#4B0082; font-size:20px; font-family:cursive;">Contact Details</p>');
+											
+						if(staff.office.length != 0)	// Checking if the content of office, website, phone, email exists
+						{
+							$('#PepStaff').append('<i class="fas fa-compass"></i> ' +staff.office+'<br>');
+						}
+						if(staff.website.length != 0)
+						{
+							$('#PepStaff').append('<i class="fas fa-laptop"></i>' +staff.website+'<br>');
+						}
+						if(staff.phone.length != 0)
+						{
+							$('#PepStaff').append('<i class="fas fa-phone-square"></i>' +staff.phone+'<br>');
+						}
+						if(staff.email.length !== 0)
+						{
+							$('#PepStaff').append('<i class="far fa-envelope"></i>' +staff.email+'<br>');
+						}					
+					});							
+				});
+					
+			$.each(research_json.byInterestArea, function(i){				
+				$('.areaOfInt').append('<div class="col-md-6 Claoi fadeInUp" data = '+this.areaName+'></div>');
+				$('.areaOfInt div').eq(i).append('<p>'+this.areaName+'</p>');							
+			});
+			
+			$('.areaOfInt div').on('click', function(){		// On click for area of interest	
+					var aoi = getAttributeByName(research_json.byInterestArea, 'areaName', $(this).attr('data'));
+					if (typeof aoi.areaName !== null)
+					{
+					removeAndAddDiv("AoI");					// remove existing content and give pop-up a new ID
+						$('#AoI').append('<h2>'+aoi.areaName+'</h2><br><ul></ul>');								
+						$.each(aoi.citations, function(){						
+							$('#AoI ul').append('<li>'+this+'</li>');
+							});
+					}
+					});
+				});
+				}		
+				</script>
+				<div id="faculty-info">
+					<div class="col-md-6 news-bottom1">						
+							<!--<div class="content-item" style="background-image: url(net.png)">								
+								<div class="overlay"></div>									
+								<p>Look here</p>
+							</div>	-->
+					</div>								
+				</div>
+				<div id="staff-info">									
+				</div>				
+				<div class="clearfix"> </div>
+			</div>
+		<div class = "container1">											
+		</div>		
+		</div>			
+	</div>
+
+<!--Areas of Interest-->
+
+<div class="services" id="FResearch">
+	<div class="container">
+		<div class="col-md-4 services-left animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+				<h3>Faculty Research: Areas of Interest</h3>
+				<label><i class="glyphicon glyphicon-menu-up"></i></label>
+				<span></span>
+		</div>
+		<br><br><br><br><br>
+		<br><br><br><br>
+		<div class = "areaOfInt">					
+		</div>					
+		<div class="services-top">							
+			<div class="clearfix"> </div>
+		</div>
+		
+	</div>
+</div>
+
+<!--Resources-->
+
+<div class="content-top-top" id = "StuRes">
+		<div class="container">
+			<div class="content-top" id="StuResH">
+				<div class="col-md-4 content-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h3></h3>
+					<label><i class="glyphicon glyphicon-menu-up"></i></label>
+					<span></span>
+				</div>
+				<div class="col-md-8 content-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<!--<p>There are many var form, here are many variations by injected humour. There</p>-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div>
+				<div class='containerE'>
+				<div class='eye'></div>
+				<div class='eye'></div>
+			      </div>
+			</div>
+			<br>
+			
+		<script>
+			$("#StuRes").mousemove(function(event) {							// Eye Movement Mathematics
+				var eye = $(".eye");
+				var x = (eye.offset().left) + (eye.width() / 2);
+				var y = (eye.offset().top) + (eye.height() / 2);
+				var rad = Math.atan2(event.pageX - x, event.pageY - y);
+				var rot = (rad * (180 / Math.PI) * -1) + 180;
+				eye.css({
+				  '-webkit-transform': 'rotate(' + rot + 'deg)',
+				  '-moz-transform': 'rotate(' + rot + 'deg)',
+				  '-ms-transform': 'rotate(' + rot + 'deg)',
+				  'transform': 'rotate(' + rot + 'deg)'
+					});
+			      });
+			
+			function resource_call(){
+			xhr('get',{path:'/resources/'}).done(function(resources_json){		// Ajax call for Student Resources
+				
+				$('#StuResH h3').append(resources_json.title);
+				$('#StuResH span').append(resources_json.subTitle);
+				$('.coop p').append(resources_json.coopEnrollment.title).on('click',function(){
+					removeAndAddDiv("coopBox");
+					var coopVar = resources_json.coopEnrollment;
+					$('#coopBox').append('<h2 style="text-align: center">'+coopVar.title+'</h2><hr>');
+					$.each(coopVar.enrollmentInformationContent, function(){
+						$('#coopBox').append('<h3 style="color:blue">'+this.title+'</h3>');
+						$('#coopBox').append('<p style="color:#D2691E">'+this.description+'</p><br>');
+						});
+					});
+				
+				$('.forms p').append("Forms").on('click',function(){
+					removeAndAddDiv("formsBox");
+					var formsVar = resources_json.forms;
+					$('#formsBox').append('<h2 style="text-align: center">Forms</h2><hr>');
+					$('#formsBox').append('<h2 style="color:blue">Graduate Forms</h2><ul></ul>');
+					$.each(formsVar.graduateForms,function(){
+						$('#formsBox').append('<li style="color:#D2691E"><a href="ist.rit.edu/"'+this.href+'>'+this.formName+'</li>');
+						});
+					
+					$('#formsBox').append('<h2 style="color:blue">Undergraduate Forms</h2><ul></ul>');
+					$.each(formsVar.undergraduateForms,function(){
+						$('#formsBox').append('<li style="color:#D2691E"><a href="ist.rit.edu/"'+this.href+'>'+this.formName+'</li>');
+						});
+					});
+				
+				$('.ambassador p').append("Student Ambassador Information & Application").on('click',function(){
+					removeAndAddDiv("ambassBox");
+					var ambassVar = resources_json.studentAmbassadors;
+					$('#ambassBox').append('<h2 style="text-align: center">'+ambassVar.title+'</h2><hr>');
+					$('#ambassBox').append('<img src="'+ambassVar.ambassadorsImageSource+'" style="width:200px; height:180px"/><br>');
+					$.each(ambassVar.subSectionContent,function(){
+						$('#ambassBox').append('<h3 style="color:blue">'+this.title+'</h3>');
+						$('#ambassBox').append('<p style="color:#D2691E">'+this.description+'</p><br>');
+						});
+					
+					});
+				
+				$('.stuService p').append("Advising").on('click',function(){
+					removeAndAddDiv("StuSerBox");
+					var StuSerVar = resources_json.studentServices;
+					$('#StuSerBox').append('<h2 style="text-align: center; color:red">'+StuSerVar.title+'</h2><hr>');
+					$('#StuSerBox').append('<h3 style="color:blue">'+StuSerVar.academicAdvisors.title+'</h3>').append('<p style="color:#D2691E">'+StuSerVar.academicAdvisors.description+'</p><br>');
+					$('#StuSerBox').append('<h3 style="color:blue">'+StuSerVar.academicAdvisors.faq.title+'</h3>').append('<a href="'+StuSerVar.academicAdvisors.faq.contentHref+'">Click here for more FAQs</a><br>');
+					$('#StuSerBox').append('<br><h3 style="color:blue">'+StuSerVar.facultyAdvisors.title+'</h3>').append('<p style="color:#D2691E">'+StuSerVar.facultyAdvisors.description+'</p><br>');
+										
+					$('#StuSerBox').append('<br><h3 style="color:blue">'+StuSerVar.istMinorAdvising.title+'</h3><br>');
+					$('#StuSerBox').append(' <table id="StuSerDTable" class="display" style="width:100%"><thead><tr> <th>Title</th> <th>Advisor</th> <th>E-Mail</th> </tr></thead><tbody></tbody></table>');
+						
+					$.each(StuSerVar.istMinorAdvising.minorAdvisorInformation, function(){
+						$('#StuSerDTable tbody').append('<tr><td>'+this.title+'</td><td>'+this.advisor+'</td><td>'+this.email+'</td></tr>');
+						});
+					$('#StuSerDTable').DataTable();
+					
+					$('#StuSerBox').append('<br><h3 style="color:blue">'+StuSerVar.professonalAdvisors.title+'</h3><br>');
+					$('#StuSerBox').append('<table id="StuSerPDTable" class="display" style="width:100%"><thead><tr> <th>Name</th> <th>Department</th> <th>E-Mail</th> </tr></thead><tbody></tbody></table>');
+						
+					$.each(StuSerVar.professonalAdvisors.advisorInformation, function(){
+						$('#StuSerPDTable tbody').append('<tr><td>'+this.name+'</td><td>'+this.department+'</td><td>'+this.email+'</td></tr>');
+						});
+					$('#StuSerPDTable').DataTable();
+										
+					});
+							
+				$('.stuAbroad p').append("Study Abroad").on('click',function(){
+					removeAndAddDiv("stuAbBox");
+					var stuABVar = resources_json.studyAbroad;
+					$('#stuAbBox').append('<h2 style="text-align: center; color:red">'+stuABVar.title+'</h2><hr>').append('<p>'+stuABVar.description+'</p><br>');
+					$.each(stuABVar.places, function(){
+						$('#stuAbBox').append('<h3 style="color:blue">'+this.nameOfPlace+'</h3>');
+						$('#stuAbBox').append('<p style="color:#D2691E">'+this.description+'</p><br>');
+						});
+					});
+				$('.labss p').append("Tutors / Lab Information").on('click',function(){				
+					removeAndAddDiv("labsBox");
+					var labsVar = resources_json.tutorsAndLabInformation;
+					$('#labsBox').append('<h2 style="text-align: center; color:red;">'+labsVar.title+'</h2><hr>').append('<p>'+labsVar.description+'</p><br>');
+					$('#labsBox').append('<a href = "'+labsVar.tutoringLabHoursLink+'"> Click here to know more about Working Hours</a>');		
+					});				
+				});
+			}
+		</script>
+		
+		<div class = "container1">				
+					<div class="col-md-6 news-bottom1 fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item coop" >			
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>
+					<div class="col-md-6 news-bottom1 animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item forms">
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>				
+					<div class="col-md-6 news-bottom1" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item ambassador">
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>
+					<div class="col-md-6 news-bottom1 animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item stuService">
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>
+					<div class="col-md-6 news-bottom1 animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item stuAbroad">
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>
+					<div class="col-md-6 news-bottom1 animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+						
+							<div class="content-item labss">
+								<div class="overlay"></div>									
+								<p></p>
+							</div>	
+					</div>							
+			</div>							
+		</div>			
+	</div>
+
+
+<!--footer-->
+	<div class="footer" id="Contact">
+		<div class="container">
+			<div class="footer-head">
+				<div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<ul class=" in">					
+						
+					</ul>					
+						<span style="cursor: pointer" >News about our Department</span>
+				</div>
+				<div class="col-md-4 footer-bottom animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h2></h2>
+					<label><i class="glyphicon glyphicon-menu-up"></i></label>
+					<p></p>
+					<p> - </p>
+					<ul class="social-ic">					
+						
+					</ul>
+				</div>
+			<div class="clearfix"> </div>
+					
+			</div>
+			<p class="footer-class animated wow bounce" data-wow-duration="1000ms" data-wow-delay="500ms"> </p>
+		</div>
+	</div>
+	<script>
+		function footer_call()
+		{
+		xhr('get',{path:'/footer/'}).done(function(footer_json)			// Ajax call for footer data 
+				{			
+				$.each(footer_json.quickLinks, function(){
+					$('.in').append('<li><a href="'+this.href+'">'+this.title+'</a></li>');
+					});
+				$('.footer-bottom h2').append(footer_json.social.title);
+				$('.footer-class').append(footer_json.copyright.html);
+				$('.footer-bottom p').eq(0).append(footer_json.social.tweet).end().eq(1).append(footer_json.social.by);
+				$('.social-ic').append('<li><a href="'+footer_json.social.twitter+'"><i class="fab fa-twitter-square fa-5x"></i></a></li>').append('<li>__</li>').append('<li><a href="'+footer_json.social.facebook+'"><i class="fab fa-facebook fa-5x"></i></a></li>');
+				$('.footer-top span').on('click',function(){
+					xhr('get',{path:'/news/'}).done(function(news_json)
+					{				
+					removeAndAddDiv("FNews");						
+						$('#FNews').append('<h2>News Area</h2><br><hr>');				// Ajax call for News data				
+						$.each(news_json.older, function(){						
+							$('#FNews').append('<br><h4>'+this.title+'</h4>').append('<p>'+this.date+'</p>');
+							$('#FNews').append('<p>'+this.description+'</p><hr>');
+							});
+					});
+				});
+				});
+		}
+	</script>
+	<!--//footer-->
+</body>
+</html>

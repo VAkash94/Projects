@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Order Status
+    </title>
+    <link rel="icon" type="image/ico" href="jbs.ico" />
+    <style>
+    body
+    {
+		background-color: #FFA500;
+	}
+    h2
+    {
+        color: blue;
+        text-align: center;
+    }
+    </style>
+    <script>											
+    var ie7 = false;
+	</script>
+    
+	<!--[if lt IE 8]>					
+	<script>
+		var ie7 = true;				// Checking if the browser is IE7
+	</script>
+	<![endif]-->
+    <script src = "cookies.js"></script>
+    <script>
+        var order = 0;
+        function init3()
+        {
+            loadIt();
+        }
+        function loadIt()
+        {
+            var hold = document.getElementById('load');
+            if (parseInt(hold.style.width) <100)
+            {
+                hold.style.width = parseInt(hold.style.width) + 1 + '%';
+                setTimeout(loadIt,15);
+            }
+            if (parseInt(document.getElementById('load').style.width) == 99)
+            {
+                init2();
+            }
+        }
+        function init2()
+        {
+            document.getElementsByTagName('body')[0].removeChild(document.getElementById('load'));
+            var h2T1 = document.createElement('h2');
+            h2T1.setAttribute('id','FirstLine');
+            document.getElementsByTagName('body')[0].appendChild(h2T1);
+            var yord = document.createTextNode('Your Order of');			
+            document.getElementById('FirstLine').appendChild(yord);
+			           
+            if(localStorage)
+            {
+				console.log("From localstorage");
+                try
+                {
+                    if(localStorage.getItem('bev')==="Coffee")
+                    {
+                        order = 1;
+                        var h2T2 = document.createElement('h2');
+                        h2T2.setAttribute('id','SecLine');
+                        document.getElementsByTagName('body')[0].appendChild(h2T2);
+                        
+                        var cf = document.createTextNode(localStorage.getItem('ch1') +" with "+localStorage.getItem('ch2'));
+                        document.getElementById('SecLine').appendChild(cf);
+                    }
+                    if(localStorage.getItem('bev') === "Tea")
+                    {
+                        order = 1;
+                        var h2T3 = document.createElement('h2');
+                        h2T3.setAttribute('id','SecLine');
+                        document.getElementsByTagName('body')[0].appendChild(h2T3);
+                        
+                        var tea = document.createTextNode(localStorage.getItem('ch2'));
+                        document.getElementById('SecLine').appendChild(tea);
+                    }
+                    if (localStorage.getItem('ch1') == "Select one"|| localStorage.getItem('ch2') == "Select one")
+					{
+						order = 0;
+					}                   
+                }
+                catch(error)
+                {
+                    
+                }
+            }
+            else
+            {	
+                if(GetCookie('bev')=="Coffee")
+                    {
+						order = 1;
+                        var h2T2 = document.createElement('h2');
+                        h2T2.setAttribute('id','SecLine');
+                        document.getElementsByTagName('body')[0].appendChild(h2T2);
+                        
+                        var cf = document.createTextNode(GetCookie('ch1') +" with "+GetCookie('ch2'));
+                        document.getElementById('SecLine').appendChild(cf);
+                    }
+                    if(GetCookie('bev') == "Tea")
+                    {
+						order = 1;
+                        var h2T3 = document.createElement('h2');
+                        h2T3.setAttribute('id','SecLine');
+                        document.getElementsByTagName('body')[0].appendChild(h2T3);
+                        
+                        var tea = document.createTextNode(GetCookie('ch2'));
+                        document.getElementById('SecLine').appendChild(tea);
+                    }
+					
+					if (GetCookie('ch1') == "Select one"|| GetCookie('ch2') == "Select one")
+					{
+						order = 0;
+					}
+					
+            }
+            var successh2 = document.createElement('h2');
+            successh2.setAttribute('id','sH2');
+            document.getElementsByTagName('body')[0].appendChild(successh2);
+			if (order == 1)
+			{
+				var suMessage = document.createTextNode('is successful');
+			}
+			else
+			{
+				var suMessage = document.createTextNode('is NOT successful');
+			}           
+            document.getElementById('sH2').appendChild(suMessage);
+            
+            var orderMes = document.createTextNode("Click here to place another order");
+            document.getElementById('nextOrder').appendChild(orderMes);
+            moveUp();
+            
+            function moveUp() {
+			var elem = document.getElementById("nextOrder");
+			
+			var pos = 0;
+			var id = setInterval(frame);
+			function frame()
+            {
+			  if (pos == 200)
+              {
+				clearInterval(id);				
+			  } else
+              {
+				pos++; 
+				elem.style.bottom = pos + 'px';
+                }            
+              if (pos == 200)
+              {
+                elem.style.border = "2px #98FB98";
+                elem.style.backgroundColor = "	#FFFF00";
+              }
+			}
+            
+            document.getElementById('nextOrder').onclick = backToHome;
+            
+            function backToHome()
+            {
+                window.location = "index.html";
+            }			
+            }
+        }
+    </script>
+    
+</head>
+<body onload="init3();">
+    <div id = "top" style="border:2px solid blue; font-size: 20px; background-color: #98FB98;
+	font-family: Comic Sans MS; text-align: center; position: sticky; top: 1px">
+        <h1 id = "heading" style = "color:red">Java BeanS</h2>
+    </div>
+    <hr>
+    <br>
+    <div id = "load" style = "background-color:#CD853F; border:2px #D2B48C; width : 2%; height : 50px;">
+        
+    </div>
+    <div id = "nextOrder" style = "position:absolute;left: 39%;bottom:10px; font-family: Comic Sans MS; color: #808000; font-size: 20px">
+        
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Java BeanS
+    </title>
+	<link rel="icon" type="image/ico" href="jbs.ico" />
+    <style>
+	body
+	{
+		background-color: #FFA500;
+	}
+	.bevTitle{
+    text-align: center;
+	}
+	.left
+	{
+		background-color: #FFDAB9;
+	}
+	img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+	}
+	.animate {
+	left:280px;	
+	width: 15px;
+	height: 15px;
+	position: relative;
+	background-color: white;
+	}
+	.divForm
+	{
+		border:2px solid red;
+		padding:2%;
+		height:220px;
+		width:200px;
+		background-color: #F5F5F5;
+	}
+	</style>
+	<script>
+		if(!document.getElementById)
+		{
+			window.location = "redirect.html";							// Redirecting the ancient browsers
+		}
+	</script>
+	<script>											
+    var ie7 = false;
+	</script>
+	
+	<!--[if lt IE 8]>					
+	<script>
+		var ie7 = true;				// Checking if the browser is IE7
+	</script>
+	<![endif]-->
+	<script src="data.js"></script>
+	<script src="cookies.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117512433-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117512433-1');
+</script>
+
+    <script>	
+		var sugar = 0;
+		var honey = 0;		
+        function createOpt(dom)
+        {
+			var hold;			
+			if(typeof(dom) === "string")		// Passing over the first select option
+			{
+				hold=data[dom];
+			}
+			else
+			{
+				lenChild = document.getElementById('left').childNodes.length;
+				if (document.getElementById('left').childNodes[lenChild-2] !== dom)
+				{							
+						console.log("One of the select option is changed");	/////
+						sugar = 0;
+						honey = 0;
+						//console.log(dom.value);
+						//document.getElementById('left').removeChild
+						
+						len1 = document.getElementById('left').childNodes.length;
+						indexChild = 0;
+						for (var item = 0; item<len1; item++)
+						{
+							if (dom === document.getElementById('left').childNodes[item] )
+							{
+								//console.log(item);	/////
+								indexChild = item;
+								break;
+							}
+						}
+						var x = indexChild;
+						var lenRight = document.getElementById('right').childNodes.length;
+						
+						if (x == 2 || x == 6 || (document.getElementById('left').childNodes[2].value == "Tea" && x == 10)) 
+						{
+							for (var ri = 0; ri < lenRight ; ri++)
+							{
+								document.getElementById('right').removeChild(document.getElementById('right').firstChild);
+							}
+							document.getElementById('right').style.backgroundColor = "";
+						}
+						var len2 = document.getElementById('left').childNodes.length;
+						for (var item1 = indexChild+2; item1 < (len2); item1++)		// made a change
+						{
+							document.getElementById('left').removeChild(document.getElementById('left').childNodes[x+2]);							
+						}
+				}				
+				if (typeof( data[dom.value]) !== "undefined")		// Condition to print in the question and stop at the end
+					{
+					var eleTxt = document.createTextNode("Choose a "+dom.value+" you would like to have");
+					document.getElementById('left').appendChild(eleTxt);										
+					}
+					
+				if (typeof image_set[dom.value] !== "undefined")	// Condition to display image only if available
+						{
+						var bevTitle = document.createElement('h1');	// Creating the title for selected beverage
+						bevTitle.setAttribute('class', "bevTitle");
+						bevTitle.setAttribute('id','bevTitle');
+						bevTitle.setAttribute('style','color:aqua');
+						document.getElementById('right').appendChild(bevTitle);	
+						var titleR = document.createTextNode(dom.value);
+						bevTitle.appendChild(titleR);
+						
+						var brRight1 = document.createElement('br');	// Break element
+						document.getElementById('right').appendChild(brRight1);
+						
+						var brRight2 = document.createElement('br');	// Break element
+						document.getElementById('right').appendChild(brRight2);
+						
+						var image = document.createElement('img');		// creating the image of selected beverage						
+						image.setAttribute('src',image_set[dom.value][0]);
+						image.setAttribute('align','center');
+						document.getElementById('right').appendChild(image);						
+						document.getElementById('right').style.backgroundColor = image_set[dom.value][1];
+						}
+				
+				hold = data[dom.value];		// Assigning the incoming value to lookup for data
+			}			
+			if(typeof hold !== "undefined")
+			{
+				var selBut = document.createElement('select');
+				selBut.setAttribute('name','selbutton');
+				if(ie7)
+				{
+					selBut.setAttribute('onchange',function(){createOpt(this);});
+				}
+				else
+				{
+					selBut.setAttribute('onchange','createOpt(this)');
+				}
+				
+				var brTag = document.createElement('br');
+				document.getElementById('left').appendChild(brTag);
+				len_of_array = hold.length;
+				for (var i = 0; i < len_of_array ; i++)
+					{
+						opt = document.createElement('option');			// create <option> tag
+						opt.setAttribute('value',hold[i]);
+						forDisp = document.createTextNode(hold[i]);  	// create text to be displayed
+						opt.appendChild(forDisp);							// append this text to option tag	
+						selBut.appendChild(opt);							// append this option tag to select tag
+					}
+				
+				var brTag2 = document.createElement('br');
+				document.getElementById('left').appendChild(selBut);
+				document.getElementById('left').appendChild(brTag2);
+			}			
+			else
+			{
+				//done with building selects...
+				console.log("Reached the end of data");
+				var brTag3 = document.createElement('br');
+				document.getElementById('left').appendChild(brTag3);
+				
+				var splText = document.createTextNode("You can make this more special!!");
+				document.getElementById('left').appendChild(splText);
+				var brTag4 = document.createElement('br');
+				document.getElementById('left').appendChild(brTag4);
+				var spl_array = new Array("Sugar Cubes","Honey");
+				len_of_spl_array = spl_array.length;
+				for (var j = 0; j < len_of_spl_array; j++)	// Creating special additions sugar cubes using check box
+				{
+					var chbox1 = document.createElement('input');
+					chbox1.setAttribute('type','checkbox');
+					chbox1.setAttribute('value',spl_array[j]);
+					if (ie7)
+					{
+						chbox1.setAttribute('onclick',function(){special(this);});
+					}
+					else
+					{
+						chbox1.setAttribute('onclick','special(this)');
+					}					
+					var spl_item = document.createTextNode(spl_array[j]);					
+					document.getElementById('left').appendChild(chbox1); 
+					document.getElementById('left').appendChild(spl_item);
+					var brTag5 = document.createElement('br');
+					document.getElementById('left').appendChild(brTag5);
+				}				
+				var brElem = document.createElement('br');
+				document.getElementById('left').appendChild(brElem);
+				
+				var divForm = document.createElement('div');	// create div for form
+				divForm.setAttribute('id','divForm');
+				divForm.setAttribute('class','divForm');
+				document.getElementById('left').appendChild(divForm);
+				
+				var formEle = document.createElement('form');		// creating form element
+				formEle.setAttribute('id','leftForm');
+				formEle.setAttribute('action','orderPlaced.html');
+				formEle.setAttribute('name','leftForm');
+				formEle.setAttribute('onsubmit','return evaluateForm();');
+				document.getElementById('divForm').appendChild(formEle);
+				
+				var formEntries = new Array("First Name","Last Name", "Address","Primary Phone");
+				var formEntriesName = new Array("fname","lname","address","phone");
+				
+				ent_len = formEntries.length;
+				for (var ent = 0; ent < ent_len; ent++)
+				{
+					var fname = document.createTextNode(formEntries[ent]);
+					document.getElementById('leftForm').appendChild(fname);	// Pulling data from array for Form
+					
+					var brF1 = document.createElement('br');
+					document.getElementById('leftForm').appendChild(brF1);	//break
+					
+					var fip = document.createElement('input');				// text input
+					fip.setAttribute('type','text');
+					fip.setAttribute('name',formEntriesName[ent]);
+					document.getElementById('leftForm').appendChild(fip);
+					
+					var brF2 = document.createElement('br');				//break
+					document.getElementById('leftForm').appendChild(brF2);
+				}
+				
+				var submitBut = document.createElement('input');			// Submit button
+				submitBut.setAttribute('type','submit');
+				submitBut.setAttribute('value','Click here to place your order');
+				document.getElementById('leftForm').appendChild(submitBut);		
+			}
+						
+			if (localStorage)
+			{
+				try{
+					localStorage.setItem('bev',document.getElementById('left').childNodes[2].value);
+					localStorage.setItem('ch1',document.getElementById('left').childNodes[6].value);
+					localStorage.setItem('ch2',document.getElementById('left').childNodes[10].value);
+										
+					document.getElementById('divForm').firstChild[0].value = localStorage.getItem('fname');									
+					document.getElementById('divForm').firstChild[1].value = localStorage.getItem('lname');					
+					document.getElementById('divForm').firstChild[2].value = localStorage.getItem('address');					
+					document.getElementById('divForm').firstChild[3].value = localStorage.getItem('phone');					
+				}
+				catch(error)
+				{}
+			}
+			else
+			{
+				try{
+					SetCookie('bev', document.getElementById('left').childNodes[2].value);
+					SetCookie('ch1', document.getElementById('left').childNodes[6].value);
+					SetCookie('ch2', document.getElementById('left').childNodes[10].value);
+					
+					document.getElementById('divForm').firstChild[0].value = GetCookie('fname');
+					document.getElementById('divForm').firstChild[1].value = GetCookie('lname');
+					document.getElementById('divForm').firstChild[2].value = GetCookie('address');
+					document.getElementById('divForm').firstChild[3].value = GetCookie('phone');
+				}
+				catch(error)
+				{}
+			}
+        }
+		
+		function evaluateForm()
+		{
+			
+			if (localStorage)		// Form data storing into local storage
+			{
+				localStorage.setItem('fname',document.getElementById('divForm').firstChild[0].value);
+				localStorage.setItem('lname',document.getElementById('divForm').firstChild[1].value);
+				localStorage.setItem('address',document.getElementById('divForm').firstChild[2].value);
+				localStorage.setItem('phone',document.getElementById('divForm').firstChild[3].value);
+			}
+			else
+			{
+				SetCookie('fname', document.getElementById('divForm').firstChild[0].value);
+				SetCookie('lname', document.getElementById('divForm').firstChild[1].value);
+				SetCookie('address', document.getElementById('divForm').firstChild[2].value);
+				SetCookie('phone', document.getElementById('divForm').firstChild[3].value);
+			}
+			var retVal = true;
+			if (document.forms[0].elements[0].value == "" || /\d/.test(document.forms[0].elements[0].value) == true)
+			{
+				document.forms[0].elements[0].style.backgroundColor = "red";
+				document.forms[0].elements[0].value = "Invalid First Name";
+				setTimeout(function(){errorMessage(0);},500);	// TRY USING THIS
+				retVal = false;
+			}
+			
+			if (document.forms[0].elements[1].value == "" || /\d/.test(document.forms[0].elements[1].value) == true)
+			{
+				document.forms[0].elements[1].style.backgroundColor = "red";
+				document.forms[0].elements[1].value = "Invalid Last Name";
+				setTimeout(function(){errorMessage(1);},500);	
+				retVal = false;
+			}
+			if (document.forms[0].elements[2].value == "")
+			{
+				document.forms[0].elements[2].style.backgroundColor = "red";
+				document.forms[0].elements[2].value = "Enter your Address";
+				setTimeout(function(){errorMessage(2);},500);	
+				retVal = false;
+			}
+			if (document.forms[0].elements[3].value.length != 10)
+			{
+				document.forms[0].elements[3].style.backgroundColor = "red";
+				document.forms[0].elements[3].value = "Invalid Phone Number";
+				setTimeout(function(){errorMessage(3);},500);	
+				retVal = false;
+			}
+			return retVal;
+		}
+		function errorMessage(val)
+		{
+			document.forms[0].elements[val].style.backgroundColor = "";
+			document.forms[0].elements[val].value = "";
+		}		
+		function special(dom)		// MEdia query
+		{			
+			if (dom.value == "Honey")
+			{				
+				honey += 1;
+				if (honey %2 != 0)
+				{
+					splDiv("yellow");
+				}
+			}
+			if(dom.value == "Sugar Cubes")
+			{				
+				sugar += 1;
+				if (sugar %2 != 0)
+				{
+					splDiv("white");
+				}
+			}
+		}
+		function splDiv(divColor)
+		{
+				var box = document.createElement('div');
+				box.setAttribute('id','animate');
+				box.setAttribute('class','animate');
+				box.setAttribute('pos','absolute');
+				document.getElementById('right').insertBefore(box, document.getElementById('bevTitle'));
+				document.getElementById('animate').style.backgroundColor = divColor;
+				myMove(5, 300);	// delay, position
+		}
+		function myMove(speed, stPos)
+		{
+			var elem = document.getElementById("animate");
+			document.getElementById("animate").style.left = stPos;
+			var pos = 0;
+			var id = setInterval(frame, speed);
+			function frame()
+			{
+			var end = 200;
+			if (document.getElementById('left').childNodes[6].value === "Bottled Ice Tea")
+			{
+				end = 150;
+			}
+			  if (pos == end) {
+				clearInterval(id);
+				fadeOut();
+				document.getElementById('right').removeChild(document.getElementById("animate"));
+			  } else {
+				pos++; 
+				elem.style.top = pos + 'px'; 
+			  }
+			}
+		}
+		function fadeOut()
+		{
+			document.getElementById("animate").style.opacity = 0.2;
+		}
+    </script>
+</head>
+<body onload="createOpt('init');">
+    <div id = "top" style="border:2px solid blue; font-size: 20px; background-color: #98FB98;
+	font-family: Comic Sans MS; text-align: center; position: sticky; top: 1px">
+        <h1 id = "heading" style = "color:red">Java BeanS</h2>
+    </div>
+	<hr>
+    <div id = "left" class = "left" style="border:1px solid pink;padding:2%;font-size:20px; float: left; height: 550px; width:40%; " >
+		 Choose a beverage you would like to have
+    </div>
+    <div id = "right" style="border:1px solid pink;padding:2%;font-size:20px; float: right; height: 550px; width:50%" >
+    </div>
+</body>
+</html>
