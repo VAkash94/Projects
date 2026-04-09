@@ -87,11 +87,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			{	
 			return $.ajax({
 				type:getOrPost,
-				url:'proxy.php',
+				url:'https://api.codetabs.com/v1/proxy/?quest=https://ischool.gccis.rit.edu/api' + d.path,
 				cache:false,
 				async:true,
 				dataType:'json',	// this is important or else you'll get a plain string
-				data:d,
 				beforeSend:function(){
 						// put out a spinner if pId is defined
 				}
@@ -552,7 +551,7 @@ TECHNOLOGIES @ RIT</h4>
 			<div class="mapNtable">				
 				<div class="mapouter">
 					<h3>Where Our Students Work</h3><br>
-					<div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="http://www.ist.rit.edu/api/map/" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+					<div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://ischool.gccis.rit.edu/api/map/" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
 						
 					</iframe></div>
 					<style>.mapouter{overflow:hidden;height:500px;width:600px;}.gmap_canvas {background:none!important;height:500px;width:600px;}</style>
